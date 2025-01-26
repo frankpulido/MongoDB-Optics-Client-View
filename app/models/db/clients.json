@@ -1,0 +1,65 @@
+[{
+  "client_name": "Frank",
+  "client_address": {"street_address": "Riverside Drive 20", "floor_and_apartment": "1-1", "borough": "Manhattan", "postal_code": "08036", "country": "USA"},
+  "client_cellphone": "+34653343353",
+  "client_email": "frankpulido@me.com",
+  "client_graduationL": NumberDecimal("2.4"),
+  "client_graduationR": NumberDecimal("2.3"),
+  "client_last_graduation_exam": new Date("2024-07-01T11:05:03.000Z"),
+  "client_registered": new Date("2020-01-05T05:28:20.701Z"),
+  "last_shoppings": [
+    {
+      "glassframe_id": ObjectId("675f07375b6c5069316a1dab"),
+      "graduationL": NumberDecimal("2.3"),
+      "graduationR": NumberDecimal("2.1"),
+      "price": NumberDecimal("120.50"),
+      "soldBy": ObjectId("675f08418ff4bfcc7a939c4d"),
+      "orderDate": new Date("2020-01-05T05:28:20.701Z")
+    },
+    {
+      "glassframe_id": ObjectId("675f07375b6c5069316a1dac"),
+      "graduationL": NumberDecimal("2.4"),
+      "graduationR": NumberDecimal("2.3"),
+      "price": NumberDecimal("180.00"),
+      "soldBy": ObjectId("675f08418ff4bfcc7a939c4e"),
+      "orderDate": new Date("2024-07-01T11:05:03.000Z")
+    }
+  ]
+},
+{
+  "client_name": "Laura",
+ "client_address": {"postal_code": "08002", "country" : "Spain"},
+  "client_cellphone": "+34677389143",
+  "client_email": "laura@gmail.com",
+  "client_referred_by": ObjectId("675f101f5ce780c8436309c4"),
+  "client_graduationL": NumberDecimal("1.5"),
+  "client_graduationR": NumberDecimal("1.7"),
+  "client_last_graduation_exam": new Date("2023-09-27T05:30:00.927Z"),
+  "client_registered": new Date("2023-09-27T05:30:00.927Z"),
+  "last_shoppings": [
+    {
+      "glassframe_id": ObjectId("675f07375b6c5069316a1dad"),
+      "graduationL": NumberDecimal("1.5"),
+      "graduationR": NumberDecimal("1.7"),
+      "price": NumberDecimal("145.00"),
+      "soldBy": ObjectId("675f08418ff4bfcc7a939c4e"),
+      "orderDate": new Date("2023-09-27T05:30:00.927Z")
+    }
+  ]
+},
+{
+  "client_name": "Rubén",
+  "client_address": {"postal_code": "08028", "country": "Spain"},
+  "client_cellphone": "+34654456321",
+  "client_email": "ruben@gmail.com",
+  "client_referred_by": ObjectId("675f10c85ce780c8436309c5"),
+  "client_registered": new Date("2020-05-18T14:10:30.000Z"),
+  "last_shoppings": [
+    {
+      "glassframe_id": ObjectId("675f07375b6c5069316a1dae"),
+      "price": NumberDecimal("147.50"),
+      "soldBy": ObjectId("675f08418ff4bfcc7a939c4d"),
+      "orderDate": new Date("2020-05-18T14:10:30.000Z")
+    }
+  ]
+}]
