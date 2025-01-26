@@ -1,0 +1,69 @@
+<?php
+// Fetch request data used by head
+$title = $this->title;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <?php
+    // Fetch request data for the forms
+    $clients = $this->allClients;
+    $frames = $this->allGlassFrames;
+
+    // Get first client given that it will be the default option of the dropdown menu
+    $client = ($this->selectedClient) ?? $clients[0];
+    ?>
+        <h2 class="rajdhani-light" style="margin-left: 15px;">DISPLAY CLIENT'S INFO</h2>
+
+        <form action="<?php echo WEB_ROOT; ?>/application/optics" method="POST">
+            <div style="margin: 0px 0px 5px 15 px;">
+                <label for="client_id" class="rajdhani-light">Choose a client:</label>
+                <select name="client_id" id="client_id" class="rajdhani-light">
+
+                    <?php foreach ($clients as $client): ?>
+                        <option value="<?= $client['_id']; ?>" <?= $client['_id'] == $client['_id'] ? 'selected' : '' ?>>
+                            <?= $client['_id'] . ' - ' . htmlspecialchars($client['client_name']); ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
+            </div>
+            <button type="submit" class="rajdhani-light" style="align-self: flex-start; padding: 10px 20px; margin: 0px 0px 25px 15px;">VIEW CLIENT</button>
+        </form>
+
+        <div class="rajdhani-light" style="margin-left: 10px;">
+
+            <?php if ($client) : ?>
+
+                <article class="grid-item">
+                    <p><b>Name : <?= htmlspecialchars($client['client_name']) ?></b></p>
+                    <p><b>Address : <?= htmlspecialchars($client['client_address']) ?></b></p>
+                    <p><b>Mobile : <?= htmlspecialchars($client['client_cellphone']) ?></b></p>
+                    <p><b>Email : <?= htmlspecialchars($client['client_email']) ?></b></p>
+                    <p><b>Registered : <?= htmlspecialchars($client['client_registered']) ?></b></p>
+                </article>
+
+                <article class="grid-item">
+                    <?php if (!empty($client['last_shoppings'])) : ?>
+                        <?php foreach ($client['last_shoppings'] as $item) : ?>
+                            <p>Glassframe ID : <?= htmlspecialchars($item['glassframe_id']) ?></p>
+                            <p>Brand: <?= htmlspecialchars($item['glassframe']['brand']) ?></p>
+                            <p>Frame Type: <?= htmlspecialchars($item['glassframe']['frame_type']) ?></p>
+                            <p>Frame Colour: <?= htmlspecialchars($item['glassframe']['frame_colour']) ?></p>
+                            <p>Colour L Glass: <?= htmlspecialchars($item['glassframe']['colourLglass']) ?></p>
+                            <p>Colour R Glass: <?= htmlspecialchars($item['glassframe']['colourRglass']) ?></p>
+                            <p>Graduation L : <?= htmlspecialchars($item['graduationL']) ?></p>
+                            <p>Graduation L : <?= htmlspecialchars($item['graduationR']) ?></p>
+                            <p>Price (€) : <?= htmlspecialchars($item['price']) ?></p>
+                            <p>Sold By: <?= htmlspecialchars($item['employee']['employee_name']) ?></p>
+                            <p>Date Sold : <?= htmlspecialchars($item['orderDate']) ?></p>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </article>
+
+            <?php endif ?>
+        </div>
+</body>
+</html>

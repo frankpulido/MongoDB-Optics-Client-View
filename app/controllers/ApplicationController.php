@@ -13,6 +13,8 @@ class ApplicationController extends Controller {
 
         // Get all clients for dropdown
         $allClients = $db->clients->find([], ['projection' => ['_id' => 1, 'client_name' => 1]])->toArray();
+        // Get all frames for "Last Shoppings" details
+        $allGlassFrames = $db->glassframes->find([], ['projection' => ['_id' => 1, 'name' => 1, 'brand' => 1]])->toArray();
 
         // Get selected client or default to first
         $selectedClientId = $_POST['client_id'] ?? $allClients[0]['_id'];
@@ -28,6 +30,7 @@ class ApplicationController extends Controller {
 
         $this->view->title = 'Client Information';
         $this->view->allClients = $allClients;
+        $this->view->allGlassFrames = $allGlassFrames;
         $this->view->selectedClient = $selectedClient;
     }
 }
