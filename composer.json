@@ -1,0 +1,18 @@
+{
+    "name": "frankpulidoalvarez/sprint2_mongo_view_client",
+    "description": "frontend for glass store client area",
+    "autoload": {
+        "psr-4": {
+            "Frankpulidoalvarez\\Sprint2MongoViewClient\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "frankpulido",
+            "email": "frankpulido@me.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.20"
+    }
+}

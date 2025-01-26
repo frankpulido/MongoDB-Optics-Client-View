@@ -1,3 +1,133 @@
+# SETTING THE ENVIRONMENT
+
+## INSTALLATIONS
+
+I will assume that you have already installed PHP and MongoDB in your computer.
+I used an old MacOS (3,3 GHz Quad-Core Intel Core i7) with macOS Mointerrey version 12.7.6
+I have XAMPP PHP for MacOS : PHP 8.2.4
+
+0. Install MongoDB extension
+(Working with MacOS)
+sudo /Applications/XAMPP/xamppfiles/bin/pecl install mongodb
+Edit php.ini at the end of section "Dynamic Extensions" :
+extension=mongodb.so
+
+1. Navigate to project root:
+cd /path/to/your/project
+
+2. Initialize Composer:
+composer init
+
+3. Install MongoDB library:
+composer require mongodb/mongodb
+
+4. Install dependencies:
+composer install
+
+5. Verify MongoDB extension:
+php -m | grep mongodb
+
+6. If not shown, add to php.ini:
+echo "extension=mongodb.so" >> /path/to/your/php.ini
+
+7. Restart web server:
+sudo apachectl restart
+
+8. Edit web/index.php
+// Load Composer autoloader
+require_once ROOT_PATH . '/vendor/autoload.php';
+
+
+## ROADMAP STAGE 1
+
+1. Update config/settings.ini:
+Replace MySQL settings with MongoDB connection details:
+[database]
+driver = mongodb
+host = 127.0.0.1
+port = 27017
+dbname = optics
+user = root
+password = 12345
+
+2. Modify db.inc.php
+<?php
+$settings = parse_ini_file('settings.ini', true);
+$dbSettings = $settings['database'];
+$uri = "mongodb://{$dbSettings['host']}:{$dbSettings['port']}";
+$client = new MongoDB\Client($uri);
+$db = $client->selectDatabase($dbSettings['dbname']);
+?>
+
+3. Modify lib/base/Model.php:
+    Update the constructor to use MongoDB instead of PDO.
+
+    PDO is not suitable for MongoDB for several reasons:
+
+    1) PDO is designed for relational databases, while MongoDB is a NoSQL database. PDO supports 12 different database drivers, but MongoDB is not among them.
+    2) MongoDB requires its own specific driver for PHP, which is separate from PDO. The official MongoDB PHP driver provides a low-level API that integrates with MongoDB's native libraries.
+    3) The MongoDB PHP driver offers features specifically tailored for MongoDB, such as BSON encoding/decoding and command execution, which PDO does not provide.
+    4) Using the MongoDB-specific driver allows for better performance and functionality compared to using a generic database abstraction layer like PDO.
+    
+    To work with MongoDB in PHP, you should use the official MongoDB PHP driver and, optionally, the MongoDB PHP library for a higher-level API.
+
+    <?php
+    class Model {
+        protected $collection;
+        protected static $db;
+
+        public function __construct() {
+            $this->connect();
+            $this->collection = self::$db->selectCollection(strtolower(get_class($this)));
+        }
+
+        protected function connect() {
+            if (!self::$db) {
+                require_once(ROOT_PATH . '/config/db.inc.php');
+                self::$db = $db;
+            }
+        }
+
+        public function find($criteria = []) {
+            return $this->collection->find($criteria)->toArray();
+        }
+
+        public function findOne($criteria = []) {
+            return $this->collection->findOne($criteria);
+        }
+
+        public function insert($document) {
+            return $this->collection->insertOne($document);
+        }
+
+        public function update($criteria, $update) {
+            return $this->collection->updateMany($criteria, ['$set' => $update]);
+        }
+
+        public function delete($criteria) {
+            return $this->collection->deleteMany($criteria);
+        }
+    }
+
+4. STOP : Consider to GOTO "ROADMAP STAGE 2" below and then come back to Step 5.
+
+5. Start creating your models OR Update existing models:
+    Create/Modify your models to work with MongoDB instead of MySQL.
+
+6. Update controllers:
+    Adjust controllers to work with the new MongoDB models.
+
+7. Test the setup:
+    Create a simple test route and controller to verify the MongoDB connection.
+
+
+## ROADMAP STAGE 2
+
+
+
+
+# BELOW THE ORIGINAL README OF THE FRAMEWORK AUTHOR
+
 # PHP initial Project
 Main structure of php project. Folders / files:
 - **app**

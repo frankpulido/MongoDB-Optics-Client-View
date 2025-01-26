@@ -1,4 +1,6 @@
 <?php
+// Load Composer autoloader
+require_once ROOT_PATH . '/vendor/autoload.php';
 
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);

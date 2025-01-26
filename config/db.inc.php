@@ -7,6 +7,7 @@
 // parses the settings file
 $settings = parse_ini_file('settings.ini', true);
 
+/*
 // starts the connection to the database
 $dbh = new PDO(
   sprintf(
@@ -18,5 +19,11 @@ $dbh = new PDO(
   $settings['database']['user'],
   $settings['database']['password']
 );
+*/
+
+$dbSettings = $settings['database'];
+$uri = "mongodb://{$dbSettings['host']}:{$dbSettings['port']}";
+$client = new MongoDB\Client($uri);
+$db = $client->selectDatabase($dbSettings['dbname']);
 
 ?>
