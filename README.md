@@ -109,7 +109,7 @@ $db = $client->selectDatabase($dbSettings['dbname']);
         }
     }
 
-4. STOP : Consider to GOTO "ROADMAP STAGE 2" below and then come back to Step 5.
+4. Use environment.inc.php for database initialization. Use it to to create and feed the database.
 
 5. Start creating your models OR Update existing models:
     Create/Modify your models to work with MongoDB instead of MySQL.
@@ -119,9 +119,6 @@ $db = $client->selectDatabase($dbSettings['dbname']);
 
 7. Test the setup:
     Create a simple test route and controller to verify the MongoDB connection.
-
-
-## ROADMAP STAGE 2
 
 
 
