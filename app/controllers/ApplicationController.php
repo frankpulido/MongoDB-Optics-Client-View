@@ -7,7 +7,14 @@ use MongoDB\BSON\ObjectId;
  * Add general things in this controller.
  */
 class ApplicationController extends Controller {
-    public function clientInfo() {
+
+    public function indexAction()
+    {
+        $this->view->title = "Warnings";
+    }
+
+
+    public function opticsAction() {
         $clientModel = new Client();
         $db = $clientModel->getDatabase();
 
