@@ -1,0 +1,16 @@
+[{
+    "supplier_name": "Barcelona Best Glasses",
+    "supplier_address": {"street_address" : "Av. Diagonal 628", "floor_and_office" : "Planta 4, Oficina D", "borough" : "Sant Gervasi", "country" : "Spain", "postal_code": "08008"},
+    "supplier_phone": "+34 934567687",
+    "supplier_fax": "+34 934567800",
+    "supplier_email": "comercial@bestglasses.com",
+    "supplier_tax_id": "B63531594"
+},
+{
+    "supplier_name": "Berlin Eyeware",
+    "supplier_address": {"street_address" : "Glass Strasse 1", "floor_and_office" : "8-G", "borough" : "West Berlin", "country" : "Germany", "postal_code": "Z-20500"},
+    "supplier_phone": "+49 857867890",
+    "supplier_fax": "+49 857867900",
+    "supplier_email": "frames@kuboraum.com",
+    "supplier_tax_id": "Z76934674"
+}]

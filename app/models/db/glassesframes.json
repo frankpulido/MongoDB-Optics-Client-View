@@ -1,0 +1,40 @@
+[{
+    "brand": "Rayban",
+    "frame_type": "acetate",
+    "frame_colour": "black",
+    "colourLglass": "ambar",
+    "colourRglass": "ambar",
+    "supplier_id": ObjectId("675f0494c49aefe8014585b7"),
+    "price_actual": NumberDecimal("135.50"),
+    "price_supplier": NumberDecimal("80.50")
+},
+{
+    "brand": "Kuboraum",
+    "frame_type": "acetate",
+    "frame_colour": "blue",
+    "colourLglass": "none",
+    "colourRglass": "none",
+    "supplier_id": ObjectId("675f0494c49aefe8014585b8"),
+    "price_actual": NumberDecimal("195.50"),
+    "price_supplier": NumberDecimal("105.00")
+},
+{
+    "brand": "Etnia",
+    "frame_type": "metallic",
+    "frame_colour": "space grey",
+    "colourLglass": "blue",
+    "colourRglass": "blue",
+    "supplier_id": ObjectId("675f0494c49aefe8014585b7"),
+    "price_actual": NumberDecimal("158.50"),
+    "price_supplier": NumberDecimal("70.25")
+},
+{
+    "brand": "Rayban",
+    "frame_type": "acetate",
+    "frame_colour": "blue",
+    "colourLglass": "grey",
+    "colourRglass": "grey",
+    "supplier_id": ObjectId("675f0494c49aefe8014585b7"),
+    "price_actual": NumberDecimal("177.95"),
+    "price_supplier": NumberDecimal("50.00")
+}]
