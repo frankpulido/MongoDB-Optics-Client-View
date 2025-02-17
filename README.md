@@ -8,33 +8,51 @@ I have XAMPP PHP for MacOS : PHP 8.2.4
 
 0. Install MongoDB extension
 (Working with MacOS)
+
+First verify the extension is indeed missing :
+
+/Applications/XAMPP/xamppfiles/bin/php --ri mongodb
+
+If not installed :
+
 sudo /Applications/XAMPP/xamppfiles/bin/pecl install mongodb
+
 Edit php.ini at the end of section "Dynamic Extensions" :
+
 extension=mongodb.so
 
-1. Navigate to project root:
+2. Navigate to project root:
+   
 cd /path/to/your/project
 
-2. Initialize Composer:
+4. Initialize Composer:
+
 composer init
 
-3. Install MongoDB library:
+5. Install MongoDB library:
+
 composer require mongodb/mongodb
 
-4. Install dependencies:
+6. Install dependencies:
+
 composer install
 
-5. Verify MongoDB extension:
+7. Verify MongoDB extension:
+
 php -m | grep mongodb
 
-6. If not shown, add to php.ini:
+8. If not shown, add to php.ini:
+
 echo "extension=mongodb.so" >> /path/to/your/php.ini
 
-7. Restart web server:
+9. Restart web server:
+
 sudo apachectl restart
 
-8. Edit web/index.php
+10. Edit web/index.php
+
 // Load Composer autoloader
+
 require_once ROOT_PATH . '/vendor/autoload.php';
 
 
